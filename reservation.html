@@ -12,7 +12,7 @@
 <header class="navbar">
   <a href="index.html" class="navbar__brand">
     <img src="images/logo-badge.png" alt="Gasita's Ramen House badge logo" class="navbar__logo">
-    <span class="navbar__title">Gasita's<span>RAMEN HOUSE </span></span>
+    <span class="navbar__title">Gasita's<span>RAMEN HOUSE &middot; EST. 2024</span></span>
   </a>
   <nav class="navbar__links" id="navLinks">
     <a href="index.html">Home</a>
@@ -67,7 +67,10 @@
           </div>
           <div class="field">
             <label for="time">Time</label>
-            <input type="time" id="time" name="time">
+            <select id="time" name="time">
+              <option value="">Select a time</option>
+            </select>
+            <p class="field-hint" data-time-hint>Showing times available for the selected date.</p>
             <div class="error-msg">Please choose a time.</div>
           </div>
         </div>
@@ -262,8 +265,8 @@
   </div>
   <div class="footer__group">
     <div class="footer__social">
-      <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">f</a>
-      <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">ig</a>
+      <a href="https://facebook.com" target="_blank" aria-label="Facebook">f</a>
+      <a href="https://instagram.com" target="_blank" aria-label="Instagram">ig</a>
     </div>
     <span>&copy; 2024 Gasita's</span>
     <button class="footer__totop" aria-label="Back to top">&uarr;</button>

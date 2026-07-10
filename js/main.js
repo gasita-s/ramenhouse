@@ -249,6 +249,20 @@ document.addEventListener('DOMContentLoaded', function () {
   if (resForm) {
     var confirmBox = document.querySelector('.confirm-box');
 
+    // Operating hours: Mon–Fri 11:00 AM–10:00 PM, Sat–Sun 10:00 AM–11:00 PM
+    var HOURS = {
+      weekday: { min: '11:00', max: '22:00', label: '11:00 AM\u201310:00 PM (Mon\u2013Fri)' },
+      weekend: { min: '10:00', max: '23:00', label: '10:00 AM\u201311:00 PM (Sat\u2013Sun)' }
+    };
+
+    function dayTypeFor(dateStr) {
+      if (!dateStr) return null;
+      var d = new Date(dateStr + 'T00:00:00');
+      if (isNaN(d.getTime())) return null;
+      var day = d.getDay(); // 0 = Sun, 6 = Sat
+      return (day === 0 || day === 6) ? 'weekend' : 'weekday';
+    }
+
     var validators = {
       name: function (v) {
         return v.trim().length >= 2 ? '' : 'Please enter your full name.';
@@ -269,7 +283,14 @@ document.addEventListener('DOMContentLoaded', function () {
         return chosen >= today ? '' : 'Date cannot be in the past.';
       },
       time: function (v) {
-        return v ? '' : 'Please choose a time.';
+        if (!v) return 'Please choose a time.';
+        var dateVal = resForm.elements['date'].value;
+        var type = dayTypeFor(dateVal) || 'weekday';
+        var range = HOURS[type];
+        if (v < range.min || v > range.max) {
+          return 'We\u2019re open ' + range.label + '. Please pick a time in that window.';
+        }
+        return '';
       },
       guests: function (v) {
         var n = parseInt(v, 10);
@@ -303,9 +324,81 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!field) return;
       field.addEventListener('blur', function () { validateField(field); });
       field.addEventListener('input', function () {
-        if (field.closest('.field').classList.contains('has-error')) validateField(field);
+        // Time is picked via a discrete widget, not typed freeform text,
+        // so flag it immediately rather than waiting for blur/re-error.
+        if (name === 'time' || field.closest('.field').classList.contains('has-error')) {
+          validateField(field);
+        }
       });
     });
+
+    // The valid time window depends on which date is picked, so re-check
+    // (and re-label) time whenever date changes, not just on its own blur.
+    var dateField = resForm.elements['date'];
+    var timeField = resForm.elements['time'];
+    var timeHint = document.querySelector('[data-time-hint]');
+
+    function timeToMinutes(hhmm) {
+      var parts = hhmm.split(':');
+      return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
+    }
+    function minutesToHHMM(min) {
+      var h = Math.floor(min / 60), m = min % 60;
+      return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+    }
+    function formatLabel(hhmm) {
+      var parts = hhmm.split(':');
+      var h = parseInt(parts[0], 10), m = parts[1];
+      var ampm = h >= 12 ? 'PM' : 'AM';
+      var h12 = h % 12;
+      if (h12 === 0) h12 = 12;
+      return h12 + ':' + m + ' ' + ampm;
+    }
+
+    function populateTimeOptions() {
+      if (!timeField) return;
+      var type = dayTypeFor(dateField.value) || 'weekday';
+      var range = HOURS[type];
+      var startMin = timeToMinutes(range.min);
+      var endMin = timeToMinutes(range.max);
+      var previousValue = timeField.value;
+
+      timeField.innerHTML = '';
+      var placeholder = document.createElement('option');
+      placeholder.value = '';
+      placeholder.textContent = 'Select a time';
+      timeField.appendChild(placeholder);
+
+      for (var m = startMin; m <= endMin; m += 30) {
+        var hhmm = minutesToHHMM(m);
+        var opt = document.createElement('option');
+        opt.value = hhmm;
+        opt.textContent = formatLabel(hhmm);
+        timeField.appendChild(opt);
+      }
+
+      var stillValid = previousValue !== '' && Array.prototype.some.call(timeField.options, function (o) {
+        return o.value === previousValue;
+      });
+      timeField.value = stillValid ? previousValue : '';
+    }
+
+    function refreshTimeHint() {
+      if (!timeHint) return;
+      var type = dayTypeFor(dateField.value) || 'weekday';
+      timeHint.textContent = 'Open ' + HOURS[type].label + '.';
+    }
+
+    if (dateField && timeField) {
+      dateField.addEventListener('change', function () {
+        populateTimeOptions();
+        refreshTimeHint();
+        validateField(timeField);
+      });
+      timeField.addEventListener('change', function () { validateField(timeField); });
+    }
+    populateTimeOptions();
+    refreshTimeHint();
 
     resForm.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -327,10 +420,11 @@ document.addEventListener('DOMContentLoaded', function () {
       var nameVal = resForm.elements['name'].value.trim();
       var dateVal = resForm.elements['date'].value;
       var timeVal = resForm.elements['time'].value;
+      var timeLabel = timeVal ? formatLabel(timeVal) : timeVal;
       var guestsVal = resForm.elements['guests'].value;
 
       var message = 'Thank you, ' + nameVal + '! Your table for ' + guestsVal +
-        ' on ' + dateVal + ' at ' + timeVal + ' has been requested.';
+        ' on ' + dateVal + ' at ' + timeLabel + ' has been requested.';
 
       if (typeof window.__gasitaOrder === 'function') {
         var order = window.__gasitaOrder();
