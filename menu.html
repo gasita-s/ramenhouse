@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gasita's Ramen House — Menu</title>
+<link rel="icon" type="image/png" href="images/logo-badge.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <a href="index.html" class="navbar__brand">
+    <img src="images/logo-badge.png" alt="Gasita's Ramen House badge logo" class="navbar__logo">
+    <span class="navbar__title">Gasita's<span>RAMEN HOUSE </span></span>
+  </a>
+  <nav class="navbar__links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="menu.html" aria-current="page">Menu</a>
+    <a href="reservation.html">Reservation</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="chef.html">Chef</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="contacts.html">Contacts</a>
+  </nav>
+  <button class="navbar__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+</header>
+
+<main>
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow">The Menu</p>
+      <h1 style="max-width:22ch;">Every bowl, side, and sip &mdash; pick what you're craving.</h1>
+      <p style="color:var(--ink-soft);max-width:56ch;">Ready to book? Head to the <a href="reservation.html" style="color:var(--rust);font-weight:600;">Reservation page</a> to reserve a table and add a pre-order.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="menu-filters">
+        <button class="filter-btn is-active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="ramen">Ramen</button>
+        <button class="filter-btn" data-filter="sides">Sides</button>
+        <button class="filter-btn" data-filter="drinks">Drinks</button>
+      </div>
+
+      <div class="menu-grid menu-grid--full">
+
+        <!-- RAMEN -->
+        <article class="menu-item" data-category="ramen">
+          <div class="menu-item__top"><h3>Tonkotsu Classic</h3><span class="menu-item__price">&#8369;450</span></div>
+          <p>18-hour pork broth, chashu, ajitama egg, nori, scallion, house noodles.</p>
+          <div class="menu-item__foot"><span class="menu-item__cat">Ramen</span></div>
+        </article>
+
+        <article class="menu-item" data-category="ramen">
+          <div class="menu-item__top"><h3>Shoyu Chicken</h3><span class="menu-item__price">&#8369;420</span></div>
+          <p>Clear soy-seasoned chicken broth, grilled chicken thigh, bamboo shoots, scallion.</p>
+          <div class="menu-item__foot"><span class="menu-item__cat">Ramen</span></div>
+        </article>
+
+        <article class="menu-item" data-category="ramen">
+          <div class="menu-item__top"><h3>Miso Butter Corn</h3><span class="menu-item__price">&#8369;460</span></div>
+          <p>Rich miso broth, sweet corn, butter, ground pork, bean sprouts, chili threads.</p>
+          <div class="menu-item__foot"><span class="menu-item__cat">Ramen</span></div>
+        </article>
+
+        <article class="menu-item" data-category="ramen">
+          <div class="menu-item__top"><h3>Spicy Gasita Special</h3><span class="menu-item__price">&#8369;490</span></div>
+          <p>Our tonkotsu base turned up with house chili oil, garlic crisp, and double chashu.</p>
+          <div class="menu-item__foot"><span class="menu-item__cat">Ramen</span></div>
+        </article>
+
+        <article class="menu-item" data-category="ramen">
+          <div class="menu-item__top"><h3>Vegetable Yuzu Ramen</h3><span class="menu-item__price">&#8369;400</span></div>
+          <p>Light yuzu-kombu broth, seasonal greens, tofu, corn, mushroom, citrus zest.</p>
+          <div class="menu-item__foot"><span class="menu-item__cat">Ramen</span></div>
+        </article>
+
+        <!-- SIDES -->
+        <article class="menu-item" data-category="sides">
+          <div class="menu-item__top"><h3>Pan-Seared Gyoza (6pc)</h3><span class="menu-item__price">&#8369;180</span></div>
+          <p>Pork and cabbage dumplings, crisped on the bottom, served with chili-vinegar dip.</p>
+          <div class="menu-item__foot"><span class="menu-item__cat">Sides</span></div>
+        </article>
+
+        <article class="menu-item" data-category="sides">
+          <div class="menu-item__top"><h3>Karaage Chicken</h3><span class="menu-item__price">&#8369;220</span></div>
+          <p>Japanese fried chicken thigh bites, shredded cabbage, kewpie mayo drizzle.</p>
+          <div class="menu-item__foot"><span class="menu-item__cat">Sides</span></div>
+        </article>
+
+        <article class="menu-item" data-category="sides">
+          <div class="menu-item__top"><h3>Seasoned Egg (Ajitama)</h3><span class="menu-item__price">&#8369;60</span></div>
+          <p>Soy-marinated soft-boiled egg, cured a full day for a jammy, seasoned yolk.</p>
+          <div class="menu-item__foot"><span class="menu-item__cat">Sides</span></div>
+        </article>
+
+        <article class="menu-item" data-category="sides">
+          <div class="menu-item__top"><h3>Nori Chips</h3><span class="menu-item__price">&#8369;90</span></div>
+          <p>Crisp seaweed sheets, toasted sesame, a light brush of soy butter.</p>
+          <div class="menu-item__foot"><span class="menu-item__cat">Sides</span></div>
+        </article>
+
+        <article class="menu-item" data-category="sides">
+          <div class="menu-item__top"><h3>Edamame</h3><span class="menu-item__price">&#8369;120</span></div>
+          <p>Steamed young soybeans, finished with sea salt.</p>
+          <div class="menu-item__foot"><span class="menu-item__cat">Sides</span></div>
+        </article>
+
+        <!-- DRINKS -->
+        <article class="menu-item" data-category="drinks">
+          <div class="menu-item__top"><h3>Iced Ramune</h3><span class="menu-item__price">&#8369;90</span></div>
+          <p>Classic Japanese marble soda, served over ice.</p>
+          <div class="menu-item__foot"><span class="menu-item__cat">Drinks</span></div>
+        </article>
+
+        <article class="menu-item" data-category="drinks">
+          <div class="menu-item__top"><h3>Hot Genmaicha Tea</h3><span class="menu-item__price">&#8369;80</span></div>
+          <p>Roasted green tea with toasted brown rice, served in a clay pot.</p>
+          <div class="menu-item__foot"><span class="menu-item__cat">Drinks</span></div>
+        </article>
+
+        <article class="menu-item" data-category="drinks">
+          <div class="menu-item__top"><h3>Calamansi Soda</h3><span class="menu-item__price">&#8369;100</span></div>
+          <p>House calamansi cordial, soda water, a sprig of mint.</p>
+          <div class="menu-item__foot"><span class="menu-item__cat">Drinks</span></div>
+        </article>
+
+        <article class="menu-item" data-category="drinks">
+          <div class="menu-item__top"><h3>Craft Root Beer</h3><span class="menu-item__price">&#8369;110</span></div>
+          <p>Small-batch root beer on tap, served ice-cold.</p>
+          <div class="menu-item__foot"><span class="menu-item__cat">Drinks</span></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__group">
+    <a href="contacts.html">&#128205; San Andres, Cainta</a>
+    <span class="footer__hours">Open Daily 11:00&ndash;22:00</span>
+  </div>
+  <div class="footer__group">
+    <div class="footer__social">
+      <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">f</a>
+      <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">ig</a>
+    </div>
+    <span>&copy; 2024 Gasita's</span>
+    <button class="footer__totop" aria-label="Back to top">&uarr;</button>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

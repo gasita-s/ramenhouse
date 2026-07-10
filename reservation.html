@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gasita's Ramen House — Reservation</title>
+<link rel="icon" type="image/png" href="images/logo-badge.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <a href="index.html" class="navbar__brand">
+    <img src="images/logo-badge.png" alt="Gasita's Ramen House badge logo" class="navbar__logo">
+    <span class="navbar__title">Gasita's<span>RAMEN HOUSE </span></span>
+  </a>
+  <nav class="navbar__links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="reservation.html" aria-current="page">Reservation</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="chef.html">Chef</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="contacts.html">Contacts</a>
+  </nav>
+  <button class="navbar__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+</header>
+
+<main>
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow">Reserve a Table</p>
+      <h1 style="max-width:22ch;">Save your stool before the broth runs out.</h1>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container form-layout">
+
+      <form class="res-form" novalidate>
+        <div class="confirm-box" role="status"></div>
+
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" autocomplete="name">
+          <div class="error-msg">Please enter your full name.</div>
+        </div>
+
+        <div class="field__row">
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email">
+            <div class="error-msg">Enter a valid email address.</div>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="09XX XXX XXXX" autocomplete="tel">
+            <div class="error-msg">Enter a valid phone number.</div>
+          </div>
+        </div>
+
+        <div class="field__row">
+          <div class="field">
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date">
+            <div class="error-msg">Date cannot be in the past.</div>
+          </div>
+          <div class="field">
+            <label for="time">Time</label>
+            <input type="time" id="time" name="time">
+            <div class="error-msg">Please choose a time.</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="guests">Number of Guests</label>
+          <input type="number" id="guests" name="guests" min="1" max="20" placeholder="2">
+          <div class="error-msg">Guests must be between 1 and 20.</div>
+        </div>
+
+        <div class="field">
+          <label for="occasion">Occasion (optional)</label>
+          <select id="occasion" name="occasion">
+            <option value="">Just dinner</option>
+            <option value="birthday">Birthday</option>
+            <option value="anniversary">Anniversary</option>
+            <option value="business">Business Meal</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="notes">Special Requests (optional)</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="Allergies, seating preference, etc."></textarea>
+        </div>
+
+        <!-- PRE-ORDER -->
+        <div class="preorder-section">
+          <p class="eyebrow">Optional</p>
+          <h3 style="margin-bottom:.2em;">Add a Pre-Order</h3>
+          <p style="color:var(--ink-soft);font-size:.88rem;margin:0 0 1.2rem;">Check off anything you'd like waiting at the table when you arrive.</p>
+
+          <div class="preorder-layout">
+            <div>
+              <div class="preorder-category">
+                <h4>Ramen</h4>
+                <div class="preorder-row">
+                  <input type="checkbox" id="pre-tonkotsu" data-id="tonkotsu" data-name="Tonkotsu Classic" data-price="450">
+                  <div class="preorder-row__info"><h5>Tonkotsu Classic</h5><p>18-hour pork broth, chashu, ajitama egg.</p></div>
+                  <span class="preorder-row__price">&#8369;450</span>
+                  <div class="preorder-row__qty">
+                    <input type="number" min="1" max="10" value="1" disabled aria-label="Quantity for Tonkotsu Classic">
+                  </div>
+                </div>
+                <div class="preorder-row">
+                  <input type="checkbox" id="pre-shoyu" data-id="shoyu" data-name="Shoyu Chicken" data-price="420">
+                  <div class="preorder-row__info"><h5>Shoyu Chicken</h5><p>Soy-seasoned broth, grilled chicken thigh.</p></div>
+                  <span class="preorder-row__price">&#8369;420</span>
+                  <div class="preorder-row__qty">
+                    <input type="number" min="1" max="10" value="1" disabled aria-label="Quantity for Shoyu Chicken">
+                  </div>
+                </div>
+                <div class="preorder-row">
+                  <input type="checkbox" id="pre-miso" data-id="miso" data-name="Miso Butter Corn" data-price="460">
+                  <div class="preorder-row__info"><h5>Miso Butter Corn</h5><p>Rich miso broth, sweet corn, butter, pork.</p></div>
+                  <span class="preorder-row__price">&#8369;460</span>
+                  <div class="preorder-row__qty">
+                    <input type="number" min="1" max="10" value="1" disabled aria-label="Quantity for Miso Butter Corn">
+                  </div>
+                </div>
+                <div class="preorder-row">
+                  <input type="checkbox" id="pre-spicy" data-id="spicy" data-name="Spicy Gasita Special" data-price="490">
+                  <div class="preorder-row__info"><h5>Spicy Gasita Special</h5><p>Chili oil, garlic crisp, double chashu.</p></div>
+                  <span class="preorder-row__price">&#8369;490</span>
+                  <div class="preorder-row__qty">
+                    <input type="number" min="1" max="10" value="1" disabled aria-label="Quantity for Spicy Gasita Special">
+                  </div>
+                </div>
+                <div class="preorder-row">
+                  <input type="checkbox" id="pre-yuzu" data-id="yuzu" data-name="Vegetable Yuzu Ramen" data-price="400">
+                  <div class="preorder-row__info"><h5>Vegetable Yuzu Ramen</h5><p>Light yuzu-kombu broth, seasonal greens.</p></div>
+                  <span class="preorder-row__price">&#8369;400</span>
+                  <div class="preorder-row__qty">
+                    <input type="number" min="1" max="10" value="1" disabled aria-label="Quantity for Vegetable Yuzu Ramen">
+                  </div>
+                </div>
+              </div>
+
+              <div class="preorder-category">
+                <h4>Sides</h4>
+                <div class="preorder-row">
+                  <input type="checkbox" id="pre-gyoza" data-id="gyoza" data-name="Pan-Seared Gyoza" data-price="180">
+                  <div class="preorder-row__info"><h5>Pan-Seared Gyoza (6pc)</h5><p>Crisped pork and cabbage dumplings.</p></div>
+                  <span class="preorder-row__price">&#8369;180</span>
+                  <div class="preorder-row__qty">
+                    <input type="number" min="1" max="10" value="1" disabled aria-label="Quantity for Pan-Seared Gyoza">
+                  </div>
+                </div>
+                <div class="preorder-row">
+                  <input type="checkbox" id="pre-karaage" data-id="karaage" data-name="Karaage Chicken" data-price="220">
+                  <div class="preorder-row__info"><h5>Karaage Chicken</h5><p>Japanese fried chicken, kewpie mayo.</p></div>
+                  <span class="preorder-row__price">&#8369;220</span>
+                  <div class="preorder-row__qty">
+                    <input type="number" min="1" max="10" value="1" disabled aria-label="Quantity for Karaage Chicken">
+                  </div>
+                </div>
+                <div class="preorder-row">
+                  <input type="checkbox" id="pre-ajitama" data-id="ajitama" data-name="Seasoned Egg" data-price="60">
+                  <div class="preorder-row__info"><h5>Seasoned Egg (Ajitama)</h5><p>Soy-marinated, day-cured soft egg.</p></div>
+                  <span class="preorder-row__price">&#8369;60</span>
+                  <div class="preorder-row__qty">
+                    <input type="number" min="1" max="10" value="1" disabled aria-label="Quantity for Seasoned Egg">
+                  </div>
+                </div>
+                <div class="preorder-row">
+                  <input type="checkbox" id="pre-edamame" data-id="edamame" data-name="Edamame" data-price="120">
+                  <div class="preorder-row__info"><h5>Edamame</h5><p>Steamed young soybeans, sea salt.</p></div>
+                  <span class="preorder-row__price">&#8369;120</span>
+                  <div class="preorder-row__qty">
+                    <input type="number" min="1" max="10" value="1" disabled aria-label="Quantity for Edamame">
+                  </div>
+                </div>
+              </div>
+
+              <div class="preorder-category">
+                <h4>Drinks</h4>
+                <div class="preorder-row">
+                  <input type="checkbox" id="pre-ramune" data-id="ramune" data-name="Iced Ramune" data-price="90">
+                  <div class="preorder-row__info"><h5>Iced Ramune</h5><p>Classic Japanese marble soda.</p></div>
+                  <span class="preorder-row__price">&#8369;90</span>
+                  <div class="preorder-row__qty">
+                    <input type="number" min="1" max="10" value="1" disabled aria-label="Quantity for Iced Ramune">
+                  </div>
+                </div>
+                <div class="preorder-row">
+                  <input type="checkbox" id="pre-genmaicha" data-id="genmaicha" data-name="Hot Genmaicha Tea" data-price="80">
+                  <div class="preorder-row__info"><h5>Hot Genmaicha Tea</h5><p>Roasted green tea, toasted brown rice.</p></div>
+                  <span class="preorder-row__price">&#8369;80</span>
+                  <div class="preorder-row__qty">
+                    <input type="number" min="1" max="10" value="1" disabled aria-label="Quantity for Hot Genmaicha Tea">
+                  </div>
+                </div>
+                <div class="preorder-row">
+                  <input type="checkbox" id="pre-rootbeer" data-id="rootbeer" data-name="Craft Root Beer" data-price="110">
+                  <div class="preorder-row__info"><h5>Craft Root Beer</h5><p>Small-batch root beer on tap.</p></div>
+                  <span class="preorder-row__price">&#8369;110</span>
+                  <div class="preorder-row__qty">
+                    <input type="number" min="1" max="10" value="1" disabled aria-label="Quantity for Craft Root Beer">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ORDER SUMMARY -->
+            <aside class="order-summary" aria-label="Pre-order summary">
+              <h3>Pre-Order Summary</h3>
+              <p class="order-summary__hint">Check items on the left to add them here.</p>
+              <div class="order-summary__list">
+                <p class="order-summary__empty">No items selected yet.</p>
+              </div>
+              <div class="order-summary__totals">
+                <span>Subtotal</span>
+                <span data-order="subtotal">&#8369;0</span>
+              </div>
+              <div class="order-summary__totals">
+                <span>Service (if any items)</span>
+                <span>&#8369;20</span>
+              </div>
+              <div class="order-summary__totals grand">
+                <span>Total</span>
+                <span data-order="total">&#8369;0</span>
+              </div>
+              <button type="button" class="btn btn--outline" style="width:100%;margin-top:1rem;" data-order="clear">Clear Pre-Order</button>
+            </aside>
+          </div>
+        </div>
+
+        <p class="form-note" style="margin-top:2rem;">We'll confirm your table &mdash; and any pre-order &mdash; by email or phone within a few hours.</p>
+        <button type="submit" class="btn btn--primary" style="width:100%;">Request Reservation</button>
+      </form>
+
+      <div class="res-info">
+        <h2>Good to know</h2>
+        <p>Walk-ins are always welcome, but reservations get priority seating &mdash; especially for groups of 5 or more, and any time after 6:30pm on weekends.</p>
+        <p>Tables are held for 15 minutes past the reserved time. Running late? Give us a call and we'll do our best to hold your seat.</p>
+
+        <table class="hours-table">
+          <tr><td>Monday &ndash; Friday</td><td>11:00 AM &ndash; 10:00 PM</td></tr>
+          <tr><td>Saturday &ndash; Sunday</td><td>10:00 AM &ndash; 11:00 PM</td></tr>
+          <tr><td>Last order</td><td>30 min before close</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__group">
+    <a href="contacts.html">&#128205; San Andres, Cainta</a>
+    <span class="footer__hours">Open Daily 11:00&ndash;22:00</span>
+  </div>
+  <div class="footer__group">
+    <div class="footer__social">
+      <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">f</a>
+      <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">ig</a>
+    </div>
+    <span>&copy; 2024 Gasita's</span>
+    <button class="footer__totop" aria-label="Back to top">&uarr;</button>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
